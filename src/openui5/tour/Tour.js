@@ -1,7 +1,5 @@
 /*
- * openui5-tour
- * (c) Copyright 2017-2021 Mauricio Lauffer
- * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ * ${copyright}
  */
 
 sap.ui.define([
@@ -20,7 +18,7 @@ function(Control) {
    * OpenUI5 Tour.
    *
    * @author Mauricio Lauffer
-   * @version 0.0.25
+   * @version ${version}
    *
    * @class
    * @namespace
