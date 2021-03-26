@@ -5,7 +5,7 @@ on:
       - dev
 
 jobs:
-  release:
+  release-dev:
     runs-on: ubuntu-latest
     steps:
       - uses: GoogleCloudPlatform/release-please-action@v2
