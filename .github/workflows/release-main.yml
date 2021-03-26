@@ -1,11 +1,11 @@
-name: Release main 
+name: Release main
 on:
   push:
     branches:
       - main
 
 jobs:
-  release:
+  release-main:
     runs-on: ubuntu-latest
     steps:
       - uses: GoogleCloudPlatform/release-please-action@v2
