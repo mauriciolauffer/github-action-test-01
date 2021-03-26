@@ -1,7 +1,7 @@
 /*
  * ${copyright}
  */
-// comment x1
+// comment x2
 sap.ui.define([
   'sap/ui/core/library',
   'sap/m'
