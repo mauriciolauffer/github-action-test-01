@@ -14,9 +14,9 @@ jobs:
       with:
         author-username: mauriciolauffer
         author-email: mauricio.lauffer@finlync.com
-        mappings: '[{"src": "/dest", "dest": "/dest"}]'
+        mappings: '[{"src": "/dest", "dest": "/openui5/tour"}]'
         dest-username: mauriciolauffer
         dest-repo: github-action-test-02
-        dest-branch: main
+        dest-branch: copy-from-app-repo
         create-pr: true
         dest-pr-base-branch: main
