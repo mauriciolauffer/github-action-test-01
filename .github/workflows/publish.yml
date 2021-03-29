@@ -7,7 +7,16 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-    - name: Print github context
+    - name: Pushes to another repository
+      uses: ramble-inc/embarcadero@master
       env:
-        GITHUB_CONTEXT: ${{ toJSON(github) }}
-      run: echo "$GITHUB_CONTEXT"
+        ACCESS_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        author-username: mauriciolauffer
+        author-email: mauricio.lauffer@finlync.com
+        mappings: '[{"src": "/dest", "dest": "/dest"}]'
+        dest-username: mauriciolauffer
+        dest-repo: github-action-test-02
+        dest-branch: main
+        create-pr: true
+        dest-pr-base-branch: main
