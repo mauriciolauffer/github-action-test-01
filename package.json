@@ -4,6 +4,7 @@
   "description": "TEST",
   "author": "Mauricio Lauffer",
   "license": "MIT",
+  "private": false,
   "devDependencies": {
     "eslint": "^7.22.0",
     "eslint-config-mlauffer-ui5": "^0.0.4",
