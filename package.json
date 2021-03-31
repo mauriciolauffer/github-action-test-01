@@ -29,5 +29,8 @@
   },
   "bugs": {
     "url": "https://github.com/mauriciolauffer/github-action-test-01/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
