@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      with:
-        path: repo-01
+      #with:
+      #  path: repo-01
     - uses: actions/setup-node@v2
       with:
         node-version: 14
@@ -25,4 +25,4 @@ jobs:
       with:
         repository: mauriciolauffer/github-action-test-02
         path: repo-02
-    - run: cp -R ./dist ../repo-02/
+    - run: cp -R ./dist ./repo-02/
