@@ -14,7 +14,7 @@ jobs:
       with:
         node-version: 14
         registry-url: "https://npm.pkg.github.com"
-    - run: cd ./repo-01
+    #- run: cd ./repo-01
     - run: npm install -g @ui5/cli --ignore-scripts
     - run: npm run build
       env:
