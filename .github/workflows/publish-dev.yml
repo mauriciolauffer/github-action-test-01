@@ -1,12 +1,12 @@
 name: Publish Beta
 on:
-  pull_request:
+  pull_request_review:
     branches: [dev]
-    types: [closed]
+    types: [submitted]
 
 jobs:
   publish-dev:
-    if: github.event.pull_request.merged == true
+    if: if: github.event.review.state == "approved"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
