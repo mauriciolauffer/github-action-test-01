@@ -26,3 +26,9 @@ jobs:
         repository: mauriciolauffer/github-action-test-02
         path: repo-02
     - run: cp -R ./dist ./repo-02/
+    - run: git config user.name "$GITHUB_ACTOR"
+    - run: git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "ci: Build and publish BETA"
+
