@@ -1,9 +1,11 @@
 {
-  "name": "github-action-test-01",
-  "version": "1.0.0",
+  "name": "@mauriciolauffer/github-action-test-01",
+  "version": "100.0.5",
   "description": "TEST",
   "author": "Mauricio Lauffer",
   "license": "MIT",
+  "private": false,
+  "files": ["dist", "src", "ui5.yaml"],
   "devDependencies": {
     "eslint": "^7.22.0",
     "eslint-config-mlauffer-ui5": "^0.0.4",
@@ -29,5 +31,8 @@
   },
   "bugs": {
     "url": "https://github.com/mauriciolauffer/github-action-test-01/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
