@@ -1,10 +1,11 @@
 {
   "name": "@mauriciolauffer/github-action-test-01",
-  "version": "100.0.3",
+  "version": "100.0.4",
   "description": "TEST",
   "author": "Mauricio Lauffer",
   "license": "MIT",
   "private": false,
+  "files": ["dist", "src", "ui5.yaml"],
   "devDependencies": {
     "eslint": "^7.22.0",
     "eslint-config-mlauffer-ui5": "^0.0.4",
