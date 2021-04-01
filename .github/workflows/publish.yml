@@ -25,9 +25,10 @@ jobs:
       with:
         repository: mauriciolauffer/github-action-test-02
         path: repo-02
+    - run: ls .
     - run: cd repo-01
-    - run: cp -R ./dist ./repo-02/
-    - run: ls ./dist ../repo-02/
+    - run: cp -R ./src ./repo-02/
+    - run: ls ./src ../repo-02/
     - run: ls ../repo-02/
     - run: git config user.name "$GITHUB_ACTOR"
     - run: git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
