@@ -29,9 +29,9 @@ jobs:
         token: ${{ secrets.GIT_WRITE_TOKEN }}
     - run: ls .
     #- run: cd repo-01
-    - run: cp -R ./src ../repo-02/
+    - run: cp -R ./dist ../repo-02/
       working-directory: repo-01
-    - run: ls ./repo-01/src
+    - run: ls ./repo-01/dist
     - run: ls ./repo-02/
     - run: |
         git config user.name "$GITHUB_ACTOR"
