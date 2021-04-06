@@ -26,7 +26,7 @@ jobs:
       with:
         repository: mauriciolauffer/github-action-test-02
         path: repo-02
-        token: ${{ secrets.API_TOKEN_GITHUB }}
+        token: ${{ secrets.GIT_WRITE_TOKEN }}
     - run: ls .
     #- run: cd repo-01
     - run: cp -R ./src ../repo-02/
