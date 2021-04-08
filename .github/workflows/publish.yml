@@ -27,6 +27,8 @@ jobs:
         repository: mauriciolauffer/github-action-test-02
         path: repo-02
         token: ${{ secrets.GIT_WRITE_TOKEN }}
+    - run: rm -r ./distxxxxx/*
+      working-directory: repo-02
     - run: rm -r ./dist/*
       working-directory: repo-02
     - run: |
