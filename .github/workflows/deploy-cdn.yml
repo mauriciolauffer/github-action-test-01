@@ -1,15 +1,15 @@
-name: Publish deploy
+name: Deploy CDN
 on:
   push:
-    branches: [deploy]
+    branches: [dev]
 
 jobs:
-  publish-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
-        path: repo-01
+        path: app-repo
     - uses: actions/setup-node@v2
       with:
         node-version: 14
@@ -17,26 +17,24 @@ jobs:
     - run: |
         npm install -g @ui5/cli --ignore-scripts
         npm run build
-      working-directory: repo-01
+      working-directory: app-repo
       env:
         CI: true
 
-    - name: Checkout tools repo
+    - name: Checkout CDN repo
       uses: actions/checkout@v2
       with:
-        repository: mauriciolauffer/github-action-test-02
-        path: repo-02
-        token: ${{ secrets.GIT_WRITE_TOKEN }}
+        repository: finlyncerp/cdn.finlync.io
+        path: cdn-repo
+        token: ${{ secrets.FINLYNC_GITHUB_REPO_WRITE }}
     - run: rm -r ./dist/*
-      working-directory: repo-02
-    - run: |
-        ls ../repo-02/
-        cp -R ./dist ../repo-02/
-      working-directory: repo-01
+      working-directory: cdn-repo
+    - run: cp -R ./dist ../cdn-repo/
+      working-directory: app-repo
     - run: |
         git config user.name "$GITHUB_ACTOR"
         git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
         git add .
         git commit -m "ci: Build and publish BETA"
         git push
-      working-directory: repo-02
+      working-directory: cdn-repo
