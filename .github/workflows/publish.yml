@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_NAME: appnametest
-      REPO_BRANCH_NAME: main
-      CDN_FOLDER_NAME: xxxx
+      REPO_BRANCH_NAME: dev
+      CDN_FOLDER_NAME: dev
     steps:
     - uses: actions/checkout@v2
       with:
@@ -46,7 +46,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: mauriciolauffer/github-action-test-02
-        ref: ${{ env.GIT_BRANCH_NAME }}
+        ref: ${{ env.REPO_BRANCH_NAME }}
         path: repo-02
     - run: |
         rm -r ./dist/*
@@ -56,5 +56,5 @@ jobs:
       working-directory: repo-01
     - run: |
         echo "ci: Build and publish $APP_NAME BETA"
-        ls ./dist/aaa/$REPO_BRANCH_NAME/ccc
+        ls ./dist/aaa
       working-directory: repo-02
