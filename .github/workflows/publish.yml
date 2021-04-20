@@ -14,6 +14,7 @@ jobs:
       CDN_FOLDER_NAME: ${{ github.ref##*/ }}
     steps:
       - run: |
+          echo "CDN_FOLDER_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
           echo $APP_NAME
           echo $REPO_BRANCH_NAME
           echo $CDN_FOLDER_NAME
