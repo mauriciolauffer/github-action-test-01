@@ -11,7 +11,7 @@ jobs:
     env:
       APP_NAME: appnametest
       REPO_BRANCH_NAME: main
-      CDN_FOLDER_NAME: ${{ env.REPO_BRANCH_NAME }}
+      CDN_FOLDER_NAME: xxxx
     steps:
     - uses: actions/checkout@v2
       with:
