@@ -11,7 +11,7 @@ jobs:
     env:
       APP_NAME: appnametest
       REPO_BRANCH_NAME: dev
-      CDN_FOLDER_NAME: dev
+      CDN_FOLDER_NAME: ${{ github.ref##*/ }}
     steps:
       - run: |
           echo $APP_NAME
