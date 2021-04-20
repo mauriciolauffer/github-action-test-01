@@ -13,48 +13,52 @@ jobs:
       REPO_BRANCH_NAME: dev
       CDN_FOLDER_NAME: dev
     steps:
-    - uses: actions/checkout@v2
-      with:
-        path: repo-01
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 14
-        registry-url: "https://npm.pkg.github.com"
-    - uses: actions/cache@v2
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - name: NPM install
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: |
-        echo $APP_NAME
-        echo $REPO_BRANCH_NAME
-        echo $CDN_FOLDER_NAME
-        npm install -g @ui5/cli --ignore-scripts
-        npm ci
-        npm run build
-      working-directory: repo-01
-      env:
-        CI: true
-    - run: npm run build
-      working-directory: repo-01
+      - run: |
+          echo $APP_NAME
+          echo $REPO_BRANCH_NAME
+          echo $CDN_FOLDER_NAME
+          echo ${GITHUB_REF##*/}
+
+    # - uses: actions/checkout@v2
+    #   with:
+    #     path: repo-01
+    # - uses: actions/setup-node@v2
+    #   with:
+    #     node-version: 14
+    #     registry-url: "https://npm.pkg.github.com"
+    # - uses: actions/cache@v2
+    #   with:
+    #     path: ~/.npm
+    #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-node-
+    # - name: NPM install
+    #   if: steps.cache.outputs.cache-hit != 'true'
+    #   run: |
+    #     echo $APP_NAME
+    #     echo $REPO_BRANCH_NAME
+    #     echo $CDN_FOLDER_NAME
+    #     npm install -g @ui5/cli --ignore-scripts
+    #     npm ci
+    #     npm run build
+    #   working-directory: repo-01
+    #   env:
+    #     CI: true
+    # - run: npm run build
+    #   working-directory: repo-01
 
 
-    - name: Checkout tools repo
-      uses: actions/checkout@v2
-      with:
-        repository: mauriciolauffer/github-action-test-02
-        ref: ${{ env.REPO_BRANCH_NAME }}
-        path: repo-02
-    - run: |
-        rm -r ./dist/*
-        mkdir -p ./dist/aaa/$REPO_BRANCH_NAME/ccc
-      working-directory: repo-02
-    - run: cp -a ./dist/* ../repo-02/dist/aaa/$REPO_BRANCH_NAME/ccc
-      working-directory: repo-01
-    - run: |
-        echo "ci: Build and publish $APP_NAME BETA"
-        ls ./dist/aaa
-      working-directory: repo-02
+    # - name: Checkout tools repo
+    #   uses: actions/checkout@v2
+    #   with:
+    #     repository: mauriciolauffer/github-action-test-02
+    #     ref: ${{ env.REPO_BRANCH_NAME }}
+    #     path: repo-02
+    # - run: mkdir -p ./dist/aaa/$REPO_BRANCH_NAME/ccc
+    #   working-directory: repo-02
+    # - run: cp -a ./dist/* ../repo-02/dist/aaa/$REPO_BRANCH_NAME/ccc
+    #   working-directory: repo-01
+    # - run: |
+    #     echo "ci: Build and publish $APP_NAME BETA"
+    #     ls ./dist/aaa
+    #   working-directory: repo-02
