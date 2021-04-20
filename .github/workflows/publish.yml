@@ -8,6 +8,10 @@ on:
 jobs:
   publish-deploy:
     runs-on: ubuntu-latest
+    env:
+      APP_NAME: appnametest
+      REPO_BRANCH_NAME: main
+      CDN_FOLDER_NAME: ${{ env.REPO_BRANCH_NAME }}
     steps:
     - uses: actions/checkout@v2
       with:
@@ -25,6 +29,9 @@ jobs:
     - name: NPM install
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
+        echo $APP_NAME
+        echo $REPO_BRANCH_NAME
+        echo $CDN_FOLDER_NAME
         npm install -g @ui5/cli --ignore-scripts
         npm ci
         npm run build
@@ -39,20 +46,15 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: mauriciolauffer/github-action-test-02
+        ref: ${{ env.GIT_BRANCH_NAME }}
         path: repo-02
-        token: ${{ secrets.GIT_WRITE_TOKEN }}
-    - run: rm -r ./distxxxxx/*
-      working-directory: repo-02
-    - run: rm -r ./dist/*
-      working-directory: repo-02
     - run: |
-        ls ../repo-02/
-        cp -R ./dist ../repo-02/
+        rm -r ./dist/*
+        mkdir -p ./dist/aaa/$REPO_BRANCH_NAME/ccc
+      working-directory: repo-02
+    - run: cp -a ./dist/* ../repo-02/dist/aaa/$REPO_BRANCH_NAME/ccc
       working-directory: repo-01
     - run: |
-        git config user.name "$GITHUB_ACTOR"
-        git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-        git add .
-        git commit -m "ci: Build and publish BETA"
-        git push
+        echo "ci: Build and publish $APP_NAME BETA"
+        ls ./dist/aaa/$REPO_BRANCH_NAME/ccc
       working-directory: repo-02
