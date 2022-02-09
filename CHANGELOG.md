@@ -1,5 +1,13 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/mauriciolauffer/github-action-test-01/compare/v1.0.0...v1.0.1) (2022-02-09)
+
+
+### Bug Fixes
+
+* Library x2 ([23a93b6](https://www.github.com/mauriciolauffer/github-action-test-01/commit/23a93b6a3493a2597033443b3078385d4550c424))
+* Library x3 ([fff587e](https://www.github.com/mauriciolauffer/github-action-test-01/commit/fff587edf8825f657ce3e1f89f6e2be7fff1773d))
+
 ## 1.0.0 (2021-03-26)
 
 
